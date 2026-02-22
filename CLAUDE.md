@@ -21,7 +21,7 @@
 - **スタイリング**: Tailwind CSS
 - **コンテンツ管理**: Astro Content Collections（Markdown）
 - **ホスティング**: Vercel（オーナーが使用経験あり）
-- **ドメイン**: mieru-note.com（未取得）
+- **ドメイン**: mieru-note.jp（取得済み）
 
 ## サイト設計
 - **サイト名**: みえるノート
@@ -57,7 +57,7 @@
 - [x] 記事4本のドラフト作成（what-is-icl, icl-cost, icl-vs-lasik, icl-experience）
 - [x] SEO対策（meta tags, OGP, JSON-LD, robots.txt）
 - [ ] **ビルドエラー修正**（@astrojs/sitemap v3.7.0 の互換性問題 → ダウングレードまたは除外で対応）
-- [ ] ドメイン取得（mieru-note.com）
+- [x] ドメイン取得（mieru-note.jp）
 - [ ] Vercelへのデプロイ
 - [ ] ASP登録・アフィリエイトリンク設置
 - [ ] Google Search Console / GA4 設定

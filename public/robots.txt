@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mieru-note.com/sitemap-index.xml
+Sitemap: https://mieru-note.jp/sitemap-index.xml
