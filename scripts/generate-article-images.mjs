@@ -167,12 +167,18 @@ function createTextOverlay(title, category) {
   // テキストを画像の下半分に配置
   const textStartY = HEIGHT - textBlockHeight - 60;
 
-  // カテゴリバッジ（大きめ）
-  const badgeY = textStartY - 50;
+  // カテゴリバッジ（大きめ、タイトル上端から十分な余白を確保）
+  // textStartY はタイトル1行目のベースライン。上端は約 fontSize*0.8 上にある。
+  const titleTopY = textStartY - fontSize * 0.8;
+  const badgeHeight = 38;
+  const badgeGap = 16;
+  const badgeBottomY = titleTopY - badgeGap;
   const badgeText = colors.label;
   const badgeFontSize = 20;
   const badgeWidth = badgeText.length * 28 + 40;
-  const badgeHeight = 38;
+  // バッジテキストのベースライン（バッジ矩形の中央に配置）
+  const badgeRectY = badgeBottomY - badgeHeight;
+  const badgeTextY = badgeRectY + badgeHeight * 0.65;
 
   const titleLines = lines
     .map(
@@ -203,9 +209,9 @@ function createTextOverlay(title, category) {
   <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#overlay)" />
 
   <!-- カテゴリバッジ -->
-  <rect x="66" y="${badgeY - badgeHeight + 8}" width="${badgeWidth}" height="${badgeHeight}" rx="19"
+  <rect x="66" y="${badgeRectY}" width="${badgeWidth}" height="${badgeHeight}" rx="19"
     fill="${colors.badge}" />
-  <text x="${66 + badgeWidth / 2}" y="${badgeY}"
+  <text x="${66 + badgeWidth / 2}" y="${badgeTextY}"
     font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif"
     font-size="${badgeFontSize}" font-weight="700" fill="white" text-anchor="middle">
     ${escapeXml(badgeText)}
