@@ -4,17 +4,23 @@ import CTABox from '../components/CTABox.astro';
 import ClinicCard from '../components/ClinicCard.astro';
 import { clinics, defaultClinic } from '../data/affiliates';
 
+interface FAQ {
+  q: string;
+  a: string;
+}
+
 interface Props {
   title: string;
   description: string;
   publishedAt: string;
   updatedAt?: string;
   category: string;
+  faqs?: FAQ[];
 }
 
 const isClinicComparison = Astro.props.category === 'クリニック比較';
 
-const { title, description, publishedAt, updatedAt, category } = Astro.props;
+const { title, description, publishedAt, updatedAt, category, faqs = [] } = Astro.props;
 
 const pageUrl = `https://mieru-note.jp${Astro.url.pathname}`;
 
@@ -150,6 +156,22 @@ const style = categoryStyles[category] || { bg: 'bg-gray-50', text: 'text-gray-7
       }
     ]
   })} />
+
+  <!-- JSON-LD: FAQPage -->
+  {faqs.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    })} />
+  )}
 
   <!-- JSON-LD: ItemList (クリニック比較記事のみ) -->
   {isClinicComparison && (
