@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-gray-800 leading-relaxed;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold leading-tight;
+  }
+
+  article h2 {
+    @apply text-2xl mt-12 mb-4 pb-2 border-b-2 border-primary-500;
+  }
+
+  article h3 {
+    @apply text-xl mt-8 mb-3 pl-3 border-l-4 border-primary-400;
+  }
+
+  article p {
+    @apply mb-4 leading-loose;
+  }
+
+  article ul, article ol {
+    @apply mb-4 pl-6;
+  }
+
+  article ul {
+    @apply list-disc;
+  }
+
+  article ol {
+    @apply list-decimal;
+  }
+
+  article li {
+    @apply mb-2;
+  }
+
+  article table {
+    @apply w-full mb-6 border-collapse;
+  }
+
+  article th {
+    @apply bg-primary-50 px-4 py-2 border border-gray-200 text-left font-bold;
+  }
+
+  article td {
+    @apply px-4 py-2 border border-gray-200;
+  }
+
+  article blockquote {
+    @apply border-l-4 border-primary-300 pl-4 py-2 my-4 bg-blue-50 rounded-r;
+  }
+}

@@ -1,0 +1,54 @@
+---
+const navItems = [
+  { href: '/', label: 'ホーム' },
+  { href: '/articles/what-is-icl', label: 'ICLとは' },
+  { href: '/articles/icl-cost', label: '費用相場' },
+  { href: '/articles/icl-vs-lasik', label: 'ICL vs レーシック' },
+];
+---
+
+<header class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-2 no-underline">
+      <span class="text-2xl">👁</span>
+      <span class="text-xl font-bold text-primary-700">みえるノート</span>
+    </a>
+    <nav class="hidden md:flex gap-6">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="text-gray-600 hover:text-primary-600 transition-colors text-sm font-medium"
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+    <button
+      id="menu-toggle"
+      class="md:hidden text-gray-600 p-2"
+      aria-label="メニューを開く"
+    >
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+  <nav id="mobile-menu" class="hidden md:hidden border-t bg-white px-4 pb-4">
+    {navItems.map((item) => (
+      <a
+        href={item.href}
+        class="block py-2 text-gray-600 hover:text-primary-600 text-sm"
+      >
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+  });
+</script>

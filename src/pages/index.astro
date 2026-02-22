@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import { getCollection } from 'astro:content';
+
+const allArticles = await getCollection('articles', ({ data }) => !data.draft);
+const sortedArticles = allArticles.sort(
+  (a, b) => new Date(b.data.publishedAt).getTime() - new Date(a.data.publishedAt).getTime()
+);
+---
+
+<BaseLayout
+  title="みえるノート｜ICL・レーシック視力矯正の体験ガイド"
+  description="ICL・レーシックなど視力矯正手術の体験談と徹底ガイド。実際に施術を受けた筆者が費用・リスク・クリニック選びまで本音で解説します。"
+>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+      <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+        裸眼で見える生活、<br class="md:hidden" />始めませんか？
+      </h1>
+      <p class="text-lg md:text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+        ICL・レーシックの体験談と徹底ガイド。<br />
+        実際に施術を受けた筆者が、本音で情報をお届けします。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/articles/what-is-icl"
+          class="bg-white text-primary-700 font-bold py-3 px-8 rounded-lg hover:bg-primary-50 transition-colors no-underline"
+        >
+          ICL手術とは？
+        </a>
+        <a
+          href="/articles/icl-experience"
+          class="border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white/10 transition-colors no-underline"
+        >
+          体験談を読む
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="max-w-5xl mx-auto px-4 -mt-8">
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <div class="text-3xl mb-2">🔍</div>
+        <h3 class="font-bold text-gray-800 mb-1">徹底リサーチ</h3>
+        <p class="text-sm text-gray-600">費用・リスク・クリニック選びまで網羅的に解説</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <div class="text-3xl mb-2">📝</div>
+        <h3 class="font-bold text-gray-800 mb-1">リアルな体験談</h3>
+        <p class="text-sm text-gray-600">実際にICLを受けた筆者が術前〜術後を記録</p>
+      </div>
+      <div class="bg-white rounded-lg shadow-md p-6 text-center">
+        <div class="text-3xl mb-2">⚖️</div>
+        <h3 class="font-bold text-gray-800 mb-1">公平な比較</h3>
+        <p class="text-sm text-gray-600">ICL vs レーシックをメリット・デメリット両面から比較</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles -->
+  <section class="max-w-5xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">記事一覧</h2>
+    <div class="grid md:grid-cols-2 gap-6">
+      {sortedArticles.map((article) => (
+        <ArticleCard
+          title={article.data.title}
+          description={article.data.description}
+          slug={article.slug}
+          category={article.data.category}
+          publishedAt={new Date(article.data.publishedAt).toLocaleDateString('ja-JP')}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="bg-white py-16">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">このサイトについて</h2>
+      <p class="text-gray-600 leading-relaxed">
+        「みえるノート」は、強度近視に20年以上悩んできた筆者が、
+        ICL手術を受けることを決意したことをきっかけに立ち上げたサイトです。
+        自分自身の体験と徹底的なリサーチをもとに、
+        視力矯正手術を検討している方に向けて、本当に役立つ情報をお届けします。
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,38 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-gray-800 text-gray-300 mt-16">
+  <div class="max-w-5xl mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-white font-bold text-lg mb-3">みえるノート</h3>
+        <p class="text-sm leading-relaxed">
+          ICL・レーシックなど視力矯正手術の体験談と徹底ガイド。実際に施術を受けた筆者が、費用・リスク・クリニック選びまで本音で解説します。
+        </p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-3">人気の記事</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/articles/what-is-icl" class="hover:text-white transition-colors">ICL手術とは？</a></li>
+          <li><a href="/articles/icl-cost" class="hover:text-white transition-colors">ICLの費用相場</a></li>
+          <li><a href="/articles/icl-vs-lasik" class="hover:text-white transition-colors">ICL vs レーシック比較</a></li>
+          <li><a href="/articles/icl-experience" class="hover:text-white transition-colors">ICL体験記</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-3">サイトについて</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/about" class="hover:text-white transition-colors">運営者情報</a></li>
+          <li><a href="/privacy" class="hover:text-white transition-colors">プライバシーポリシー</a></li>
+        </ul>
+        <p class="text-xs mt-4 text-gray-400">
+          ※当サイトはアフィリエイトプログラムに参加しています。
+        </p>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-8 pt-6 text-center text-sm text-gray-400">
+      &copy; {currentYear} みえるノート All Rights Reserved.
+    </div>
+  </div>
+</footer>
