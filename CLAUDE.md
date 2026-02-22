@@ -56,10 +56,12 @@
 - [x] 基本レイアウト・コンポーネント作成
 - [x] 記事4本のドラフト作成（what-is-icl, icl-cost, icl-vs-lasik, icl-experience）
 - [x] SEO対策（meta tags, OGP, JSON-LD, robots.txt）
-- [ ] **ビルドエラー修正**（@astrojs/sitemap v3.7.0 の互換性問題 → ダウングレードまたは除外で対応）
+- [x] ビルドエラー修正（@astrojs/sitemap v3.2.1 にダウングレードで解決）
 - [x] ドメイン取得（mieru-note.jp）
-- [ ] Vercelへのデプロイ
-- [ ] ASP登録・アフィリエイトリンク設置
+- [x] Vercelへのデプロイ（GitHub連携で自動デプロイ設定済み）
+- [x] A8.net サイト登録完了（afbは登録中）
+- [x] クリニック比較記事・アフィリエイトリンク一元管理の仕組み構築
+- [ ] ASPでICL関連プログラムに提携申請 → affiliates.ts にリンク設置
 - [ ] Google Search Console / GA4 設定
 - [ ] X アカウント開設・運用開始
 - [ ] おすすめクリニック比較記事の作成（収益記事）
