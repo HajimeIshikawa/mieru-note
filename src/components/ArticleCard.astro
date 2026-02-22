@@ -5,9 +5,10 @@ interface Props {
   slug: string;
   category: string;
   publishedAt: string;
+  ogImage?: string;
 }
 
-const { title, description, slug, category, publishedAt } = Astro.props;
+const { title, description, slug, category, publishedAt, ogImage } = Astro.props;
 
 const categoryStyles: Record<string, { bg: string; text: string; dot: string }> = {
   'ICL': { bg: 'bg-primary-50', text: 'text-primary-800', dot: 'bg-primary-500' },
@@ -22,25 +23,33 @@ const style = categoryStyles[category] || { bg: 'bg-gray-50', text: 'text-gray-7
 ---
 
 <a href={`/articles/${slug}/`} class="block group no-underline">
-  <article class="relative bg-white border border-gray-200/80 rounded-lg p-6 h-full flex flex-col hover:border-primary-300 hover:shadow-sm transition-all duration-300">
-    <div class="flex items-center gap-3 mb-4">
-      <span class={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full ${style.bg} ${style.text}`}>
-        <span class={`w-1.5 h-1.5 rounded-full ${style.dot}`}></span>
-        {category}
-      </span>
-      <time class="text-xs text-gray-400 tabular-nums">{publishedAt}</time>
+  <article class="relative bg-white border border-gray-200/80 rounded-lg overflow-hidden h-full flex flex-col hover:border-primary-300 hover:shadow-sm transition-all duration-300">
+    {ogImage && (
+      <div class="aspect-[1200/630] overflow-hidden">
+        <img
+          src={ogImage}
+          alt=""
+          width="600"
+          height="315"
+          class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+          loading="lazy"
+        />
+      </div>
+    )}
+    <div class="p-5 flex flex-col flex-grow">
+      <div class="flex items-center gap-3 mb-3">
+        <span class={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full ${style.bg} ${style.text}`}>
+          <span class={`w-1.5 h-1.5 rounded-full ${style.dot}`}></span>
+          {category}
+        </span>
+        <time class="text-xs text-gray-400 tabular-nums">{publishedAt}</time>
+      </div>
+      <h3 class="font-display text-lg font-semibold text-gray-900 group-hover:text-primary-700 transition-colors mb-2 leading-snug">
+        {title}
+      </h3>
+      <p class="text-sm text-gray-500 flex-grow leading-relaxed line-clamp-2">
+        {description}
+      </p>
     </div>
-    <h3 class="font-display text-lg font-semibold text-gray-900 group-hover:text-primary-700 transition-colors mb-3 leading-snug">
-      {title}
-    </h3>
-    <p class="text-sm text-gray-500 flex-grow leading-relaxed line-clamp-2">
-      {description}
-    </p>
-    <span class="text-primary-600 text-sm font-medium mt-4 inline-flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      記事を読む
-      <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-      </svg>
-    </span>
   </article>
 </a>

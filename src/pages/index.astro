@@ -97,6 +97,7 @@ const sortedArticles = allArticles.sort(
           slug={article.slug}
           category={article.data.category}
           publishedAt={new Date(article.data.publishedAt).toLocaleDateString('ja-JP')}
+          ogImage={article.data.ogImage}
         />
       ))}
     </div>

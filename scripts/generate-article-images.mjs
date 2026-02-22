@@ -42,53 +42,53 @@ const OUTPUT_DIR = path.resolve(__dirname, '../public/images/articles');
 const WIDTH = 1200;
 const HEIGHT = 630;
 
-// ---------- 記事定義 ----------
+// ---------- 記事定義（タイトルは2行以内・短めに） ----------
 const articles = [
   {
     slug: 'what-is-icl',
-    title: 'ICL手術とは？\n仕組み・メリット・デメリットを\nわかりやすく解説',
+    title: 'ICL手術とは？\nメリット・デメリットを解説',
     category: 'ICL',
     prompt: 'A clean, modern medical illustration of a human eye cross-section with a tiny transparent lens being placed inside, soft teal and cyan gradient background, no text, minimalist style, high quality, professional medical infographic aesthetic',
   },
   {
     slug: 'icl-cost',
-    title: 'ICL手術の費用相場は？\nクリニック別の料金比較と\n安くする方法',
+    title: 'ICL手術の費用相場は？\n料金比較と安くする方法',
     category: '費用',
     prompt: 'An abstract financial concept illustration with Japanese yen coins and banknotes floating gently, warm amber and gold gradient background, subtle eye/lens icon, no text, minimalist modern style, clean professional look',
   },
   {
     slug: 'icl-vs-lasik',
-    title: 'ICLとレーシックの違いを\n徹底比較｜どっちが\n自分に合う？',
+    title: 'ICL vs レーシック\nどっちが自分に合う？',
     category: '比較',
     prompt: 'A balanced scale or comparison concept illustration, one side showing a contact lens (ICL) and the other a laser beam (LASIK), violet and purple gradient background, no text, modern minimalist style, clean medical aesthetic',
   },
   {
     slug: 'icl-experience',
-    title: '【ICL体験記】\n乱視持ちの30代が\n手術を決意するまで',
+    title: '【ICL体験記】30代が\n手術を決意するまで',
     category: '体験談',
     prompt: 'A person looking at a clear blue sky through a window with soft morning light, representing clear vision and hope, warm teal and amber tones, no text, photorealistic style with soft bokeh, emotional and personal feel',
   },
   {
     slug: 'icl-clinic-comparison',
-    title: '【2026年最新】\nICLおすすめクリニック4選\n費用・実績・保証を徹底比較',
+    title: 'ICLおすすめクリニック4選\n費用・実績・保証を比較',
     category: 'クリニック比較',
     prompt: 'A modern eye clinic interior with clean white walls and medical equipment, rose and pink soft gradient overlay, multiple clinic buildings in the background, no text, professional healthcare aesthetic, minimalist illustration style',
   },
   {
     slug: 'icl-tokyo',
-    title: '【2026年最新】\n東京でICL手術が受けられる\nおすすめクリニック5選',
+    title: '東京のICLおすすめ\nクリニック5選',
     category: 'クリニック比較',
     prompt: 'Tokyo skyline with Tokyo Tower and modern buildings, soft rose and pink gradient background, subtle eye care/medical icon overlay, no text, clean modern illustration style, professional and trustworthy feel',
   },
   {
     slug: 'icl-osaka',
-    title: '【2026年最新】\n大阪でICL手術が受けられる\nおすすめクリニック5選',
+    title: '大阪のICLおすすめ\nクリニック5選',
     category: 'クリニック比較',
     prompt: 'Osaka cityscape with Osaka Castle and Dotonbori area, soft rose and pink gradient background, subtle medical/eye care icon overlay, no text, clean modern illustration style, professional and warm feel',
   },
   {
     slug: 'icl-nagoya',
-    title: '【2026年最新】\n名古屋でICL手術が受けられる\nおすすめクリニック4選',
+    title: '名古屋のICLおすすめ\nクリニック4選',
     category: 'クリニック比較',
     prompt: 'Nagoya cityscape with Nagoya Castle and TV Tower, soft rose and pink gradient background, subtle medical/eye care icon overlay, no text, clean modern illustration style, professional and welcoming feel',
   },
@@ -152,35 +152,32 @@ async function generateBackgroundImage(prompt) {
   throw new Error('No image data in Gemini response');
 }
 
-// ---------- SVG テキストオーバーレイ ----------
+// ---------- SVG テキストオーバーレイ（モバイル可読性重視） ----------
 function createTextOverlay(title, category) {
   const colors = categoryColors[category] || categoryColors['ICL'];
 
-  // タイトルを行に分割
   const lines = title.split('\n');
 
-  // フォントサイズ計算: 行数に応じて調整
-  const fontSize = lines.length <= 2 ? 48 : 40;
-  const lineHeight = fontSize * 1.4;
+  // フォントサイズ: モバイル（375px幅）で約20px相当になるよう大きめに
+  const fontSize = 64;
+  const lineHeight = fontSize * 1.35;
 
-  // テキスト全体の高さ
   const textBlockHeight = lines.length * lineHeight;
 
-  // テキスト開始Y位置（中央よりやや上）
-  const textStartY = (HEIGHT - textBlockHeight) / 2 + fontSize * 0.3;
+  // テキストを画像の下半分に配置
+  const textStartY = HEIGHT - textBlockHeight - 60;
 
-  // カテゴリバッジ
-  const badgeY = textStartY - fontSize - 20;
+  // カテゴリバッジ（大きめ）
+  const badgeY = textStartY - 50;
   const badgeText = colors.label;
-  const badgeWidth = badgeText.length * 22 + 32;
-
-  // サイト名
-  const siteNameY = HEIGHT - 30;
+  const badgeFontSize = 20;
+  const badgeWidth = badgeText.length * 28 + 40;
+  const badgeHeight = 38;
 
   const titleLines = lines
     .map(
       (line, i) => `
-    <text x="60" y="${textStartY + i * lineHeight}"
+    <text x="70" y="${textStartY + i * lineHeight}"
       font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif"
       font-size="${fontSize}" font-weight="700" fill="white"
       filter="url(#shadow)">
@@ -191,25 +188,26 @@ function createTextOverlay(title, category) {
 
   return `<svg width="${WIDTH}" height="${HEIGHT}" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(0,0,0,0.6)" />
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="rgba(0,0,0,0.8)" />
     </filter>
     <linearGradient id="overlay" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="rgba(0,0,0,0.1)" />
-      <stop offset="40%" stop-color="rgba(0,0,0,0.4)" />
-      <stop offset="100%" stop-color="rgba(0,0,0,0.7)" />
+      <stop offset="0%" stop-color="rgba(0,0,0,0.05)" />
+      <stop offset="30%" stop-color="rgba(0,0,0,0.3)" />
+      <stop offset="70%" stop-color="rgba(0,0,0,0.6)" />
+      <stop offset="100%" stop-color="rgba(0,0,0,0.8)" />
     </linearGradient>
   </defs>
 
-  <!-- 暗めのオーバーレイでテキスト読みやすく -->
+  <!-- 濃いめのグラデーションオーバーレイ -->
   <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#overlay)" />
 
   <!-- カテゴリバッジ -->
-  <rect x="56" y="${badgeY - 20}" width="${badgeWidth}" height="30" rx="15"
-    fill="${colors.badge}" opacity="0.9" />
-  <text x="${56 + badgeWidth / 2}" y="${badgeY - 1}"
+  <rect x="66" y="${badgeY - badgeHeight + 8}" width="${badgeWidth}" height="${badgeHeight}" rx="19"
+    fill="${colors.badge}" />
+  <text x="${66 + badgeWidth / 2}" y="${badgeY}"
     font-family="'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif"
-    font-size="14" font-weight="700" fill="white" text-anchor="middle">
+    font-size="${badgeFontSize}" font-weight="700" fill="white" text-anchor="middle">
     ${escapeXml(badgeText)}
   </text>
 
@@ -217,10 +215,10 @@ function createTextOverlay(title, category) {
   ${titleLines}
 
   <!-- サイト名 -->
-  <text x="${WIDTH - 40}" y="${siteNameY}"
+  <text x="${WIDTH - 50}" y="${HEIGHT - 35}"
     font-family="'Shippori Mincho', serif"
-    font-size="16" font-weight="500" fill="rgba(255,255,255,0.8)"
-    text-anchor="end">
+    font-size="22" font-weight="500" fill="rgba(255,255,255,0.85)"
+    text-anchor="end" filter="url(#shadow)">
     みえるノート
   </text>
 </svg>`;
