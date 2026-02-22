@@ -1,6 +1,8 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import CTABox from '../components/CTABox.astro';
+import ClinicCard from '../components/ClinicCard.astro';
+import { clinics, defaultClinic } from '../data/affiliates';
 
 interface Props {
   title: string;
@@ -9,6 +11,8 @@ interface Props {
   updatedAt?: string;
   category: string;
 }
+
+const isClinicComparison = Astro.props.category === 'クリニック比較';
 
 const { title, description, publishedAt, updatedAt, category } = Astro.props;
 ---
@@ -43,7 +47,20 @@ const { title, description, publishedAt, updatedAt, category } = Astro.props;
         <slot />
       </div>
 
-      <CTABox />
+      {isClinicComparison && (
+        <div class="mt-12 space-y-6">
+          <h2 class="text-2xl font-bold text-gray-900 text-center mb-8">クリニック詳細比較</h2>
+          {clinics.map((clinic, i) => (
+            <ClinicCard clinic={clinic} rank={i + 1} />
+          ))}
+        </div>
+      )}
+
+      <CTABox
+        href={defaultClinic.href}
+        title={isClinicComparison ? 'まずは無料の適応検査から' : undefined}
+        description={isClinicComparison ? '気になるクリニックが見つかったら、まずは適応検査を受けてみましょう。ほとんどのクリニックで無料です。' : undefined}
+      />
     </article>
 
     <aside class="mt-12 p-6 bg-white rounded-lg shadow-sm">

@@ -1,4 +1,6 @@
 ---
+import { defaultClinic } from '../data/affiliates';
+
 interface Props {
   title?: string;
   description?: string;
@@ -10,7 +12,7 @@ const {
   title = '無料で適応検査を予約する',
   description = 'ICLが自分に合っているか、まずは無料の適応検査で確認してみましょう。',
   buttonText = '適応検査を予約する（無料）',
-  href = '#',
+  href = defaultClinic.href,
 } = Astro.props;
 ---
 

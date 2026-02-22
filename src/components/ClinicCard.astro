@@ -1,0 +1,65 @@
+---
+import type { Clinic } from '../data/affiliates';
+
+interface Props {
+  clinic: Clinic;
+  rank: number;
+}
+
+const { clinic, rank } = Astro.props;
+---
+
+<div class={`bg-white rounded-xl shadow-md overflow-hidden ${clinic.recommended ? 'ring-2 ring-primary-500' : ''}`}>
+  {clinic.recommended && (
+    <div class="bg-primary-600 text-white text-center text-sm font-bold py-1.5">
+      当サイトおすすめ
+    </div>
+  )}
+  <div class="p-6">
+    <div class="flex items-start justify-between mb-4">
+      <div>
+        <span class="text-sm text-gray-500 font-bold">第{rank}位</span>
+        <h3 class="text-xl font-bold text-gray-900">{clinic.name}</h3>
+      </div>
+      <div class="text-right">
+        <p class="text-sm text-gray-500">両眼</p>
+        <p class="text-2xl font-bold text-primary-600">{clinic.cost}</p>
+      </div>
+    </div>
+
+    <p class="text-gray-600 text-sm mb-4">{clinic.description}</p>
+
+    <div class="space-y-2 mb-4">
+      <div class="flex items-start gap-2 text-sm">
+        <span class="text-gray-500 whitespace-nowrap font-bold">費用：</span>
+        <span class="text-gray-700">{clinic.cost}{clinic.costNote && `（${clinic.costNote}）`}</span>
+      </div>
+      <div class="flex items-start gap-2 text-sm">
+        <span class="text-gray-500 whitespace-nowrap font-bold">保証：</span>
+        <span class="text-gray-700">{clinic.guarantee}</span>
+      </div>
+      <div class="flex items-start gap-2 text-sm">
+        <span class="text-gray-500 whitespace-nowrap font-bold">拠点：</span>
+        <span class="text-gray-700">{clinic.locations}</span>
+      </div>
+    </div>
+
+    <ul class="space-y-1 mb-6">
+      {clinic.features.map((feature) => (
+        <li class="flex items-center gap-2 text-sm text-gray-700">
+          <span class="text-accent-500 flex-shrink-0">✓</span>
+          {feature}
+        </li>
+      ))}
+    </ul>
+
+    <a
+      href={clinic.href}
+      class="block w-full bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-6 rounded-lg text-center transition-colors no-underline"
+      rel="nofollow sponsored"
+    >
+      無料適応検査を予約する
+    </a>
+    <p class="text-xs text-gray-400 mt-2 text-center">※提携クリニックのページに遷移します</p>
+  </div>
+</div>
