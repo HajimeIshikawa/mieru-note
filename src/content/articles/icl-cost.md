@@ -2,6 +2,7 @@
 title: "ICL手術の費用相場は？クリニック別の料金比較と安くする方法"
 description: "ICL手術の費用相場を徹底解説。大手クリニックの料金比較、乱視用の追加費用、医療費控除やローン活用で安くする方法まで紹介します。"
 category: "費用"
+ogImage: "/images/articles/icl-cost.png"
 publishedAt: "2026-02-21"
 updatedAt: "2026-02-22"
 tags: ["ICL", "費用", "料金比較", "医療費控除"]

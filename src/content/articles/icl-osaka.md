@@ -2,6 +2,7 @@
 title: "【2026年最新】大阪でICL手術が受けられるおすすめクリニック5選"
 description: "大阪でICL手術を検討中の方へ。梅田・心斎橋エリアを中心に、費用・実績・アクセスで比較したおすすめクリニック5院を紹介します。"
 category: "クリニック比較"
+ogImage: "/images/articles/icl-osaka.png"
 publishedAt: "2026-02-22"
 updatedAt: "2026-02-22"
 tags: ["ICL", "大阪", "クリニック", "費用"]

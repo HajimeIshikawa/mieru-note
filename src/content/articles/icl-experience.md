@@ -2,6 +2,7 @@
 title: "【ICL体験記】乱視持ちの30代が手術を決意するまで｜検査4回・60万円のリアル"
 description: "強度近視＋乱視の筆者がICL手術を決意し、適応検査から支払い完了までを体験ベースで記録。検査4回の通院、60万円の費用、想定外だったことをリアルにレポートします。"
 category: "体験談"
+ogImage: "/images/articles/icl-experience.png"
 publishedAt: "2026-02-21"
 updatedAt: "2026-02-22"
 tags: ["ICL", "体験談", "適応検査", "強度近視", "乱視"]

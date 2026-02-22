@@ -2,6 +2,7 @@
 title: "ICLとレーシックの違いを徹底比較｜どっちが自分に合う？"
 description: "ICLとレーシックの違いを費用・安全性・適応条件・見え方など7つの観点で徹底比較。あなたに合った視力矯正手術の選び方をわかりやすく解説します。"
 category: "比較"
+ogImage: "/images/articles/icl-vs-lasik.png"
 publishedAt: "2026-02-21"
 updatedAt: "2026-02-22"
 tags: ["ICL", "レーシック", "比較", "視力矯正"]

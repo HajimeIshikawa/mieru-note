@@ -2,6 +2,7 @@
 title: "ICL手術とは？仕組み・メリット・デメリットをわかりやすく解説"
 description: "ICL（眼内コンタクトレンズ）手術の仕組み、メリット・デメリット、適応条件をわかりやすく解説。レーシックとの違いや、向いている人の特徴も紹介します。"
 category: "ICL"
+ogImage: "/images/articles/what-is-icl.png"
 publishedAt: "2026-02-21"
 updatedAt: "2026-02-22"
 tags: ["ICL", "視力矯正", "眼内コンタクトレンズ"]

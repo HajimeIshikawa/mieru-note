@@ -2,6 +2,7 @@
 title: "【2026年最新】東京でICL手術が受けられるおすすめクリニック5選"
 description: "東京でICL手術を検討中の方へ。費用・実績・アクセスを比較し、おすすめクリニック5院を厳選して紹介します。"
 category: "クリニック比較"
+ogImage: "/images/articles/icl-tokyo.png"
 publishedAt: "2026-02-22"
 updatedAt: "2026-02-22"
 tags: ["ICL", "東京", "クリニック", "費用"]

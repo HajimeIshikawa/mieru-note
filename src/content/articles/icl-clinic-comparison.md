@@ -2,6 +2,7 @@
 title: "【2026年最新】ICLおすすめクリニック4選｜費用・実績・保証を徹底比較"
 description: "ICL手術を受けるならどのクリニックがおすすめ？費用・症例実績・保証内容・拠点数を比較し、自分に合ったクリニックの選び方を解説します。"
 category: "クリニック比較"
+ogImage: "/images/articles/icl-clinic-comparison.png"
 publishedAt: "2026-02-22"
 updatedAt: "2026-02-22"
 tags: ["ICL", "クリニック", "比較", "費用"]

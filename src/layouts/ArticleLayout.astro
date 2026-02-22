@@ -15,12 +15,13 @@ interface Props {
   publishedAt: string;
   updatedAt?: string;
   category: string;
+  ogImage?: string;
   faqs?: FAQ[];
 }
 
 const isClinicComparison = Astro.props.category === 'クリニック比較';
 
-const { title, description, publishedAt, updatedAt, category, faqs = [] } = Astro.props;
+const { title, description, publishedAt, updatedAt, category, ogImage, faqs = [] } = Astro.props;
 
 const pageUrl = `https://mieru-note.jp${Astro.url.pathname}`;
 
@@ -36,7 +37,7 @@ const categoryStyles: Record<string, { bg: string; text: string; dot: string }> 
 const style = categoryStyles[category] || { bg: 'bg-gray-50', text: 'text-gray-700', dot: 'bg-gray-400' };
 ---
 
-<BaseLayout title={title} description={description} ogType="article">
+<BaseLayout title={title} description={description} ogImage={ogImage} ogType="article">
   <div class="max-w-3xl mx-auto px-4 py-8">
     <nav class="text-sm text-gray-400 mb-8 flex items-center gap-2">
       <a href="/" class="hover:text-primary-700 transition-colors">ホーム</a>
@@ -47,6 +48,19 @@ const style = categoryStyles[category] || { bg: 'bg-gray-50', text: 'text-gray-7
     </nav>
 
     <article>
+      {ogImage && (
+        <div class="mb-8 -mx-4 sm:mx-0 sm:rounded-xl overflow-hidden">
+          <img
+            src={ogImage}
+            alt={title}
+            width="1200"
+            height="630"
+            class="w-full h-auto"
+            loading="eager"
+          />
+        </div>
+      )}
+
       <header class="mb-10">
         <span class={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-full mb-4 ${style.bg} ${style.text}`}>
           <span class={`w-1.5 h-1.5 rounded-full ${style.dot}`}></span>
@@ -134,7 +148,7 @@ const style = categoryStyles[category] || { bg: 'bg-gray-50', text: 'text-gray-7
       "@type": "WebPage",
       "@id": pageUrl
     },
-    "image": "https://mieru-note.jp/og-default.png",
+    "image": ogImage ? `https://mieru-note.jp${ogImage}` : "https://mieru-note.jp/og-default.png",
     "inLanguage": "ja"
   })} />
 

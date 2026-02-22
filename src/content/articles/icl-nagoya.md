@@ -2,6 +2,7 @@
 title: "【2026年最新】名古屋でICL手術が受けられるおすすめクリニック4選"
 description: "名古屋でICL手術を検討中の方へ。名駅・栄エリアのクリニックを費用・実績・アクセスで比較し、おすすめ4院を紹介します。"
 category: "クリニック比較"
+ogImage: "/images/articles/icl-nagoya.png"
 publishedAt: "2026-02-22"
 updatedAt: "2026-02-22"
 tags: ["ICL", "名古屋", "クリニック", "費用"]
