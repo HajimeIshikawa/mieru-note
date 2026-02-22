@@ -16,15 +16,18 @@ const {
 } = Astro.props;
 ---
 
-<div class="my-8 bg-gradient-to-r from-primary-50 to-accent-50 border border-primary-200 rounded-xl p-6 text-center">
-  <h3 class="text-xl font-bold text-primary-800 mb-2">{title}</h3>
-  <p class="text-gray-600 mb-4">{description}</p>
-  <a
-    href={href}
-    class="inline-block bg-primary-600 hover:bg-primary-700 text-white font-bold py-3 px-8 rounded-lg transition-colors shadow-md hover:shadow-lg no-underline"
-    rel="nofollow sponsored"
-  >
-    {buttonText}
-  </a>
-  <p class="text-xs text-gray-400 mt-3">※提携クリニックのページに遷移します</p>
+<div class="my-10 relative overflow-hidden rounded-xl border border-primary-200 bg-gradient-to-br from-primary-50 via-white to-accent-50/50">
+  <div class="absolute top-0 right-0 w-32 h-32 bg-primary-100/30 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+  <div class="relative p-7 text-center">
+    <h3 class="font-display text-xl font-semibold text-primary-900 mb-2">{title}</h3>
+    <p class="text-gray-600 text-sm mb-5 max-w-md mx-auto">{description}</p>
+    <a
+      href={href}
+      class="inline-block bg-primary-700 hover:bg-primary-800 text-white font-bold py-3.5 px-10 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md no-underline text-sm"
+      rel="nofollow sponsored"
+    >
+      {buttonText}
+    </a>
+    <p class="text-xs text-gray-400 mt-3">※提携クリニックのページに遷移します</p>
+  </div>
 </div>

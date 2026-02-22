@@ -7,6 +7,7 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  ogType?: 'website' | 'article';
   canonicalUrl?: string;
   noindex?: boolean;
 }
@@ -15,13 +16,16 @@ const {
   title,
   description,
   ogImage = '/og-default.png',
+  ogType = 'website',
   canonicalUrl,
   noindex = false,
 } = Astro.props;
 
+const siteUrl = 'https://mieru-note.jp';
 const siteTitle = 'みえるノート';
 const fullTitle = title === siteTitle ? title : `${title} | ${siteTitle}`;
 const canonical = canonicalUrl || Astro.url.href;
+const ogImageAbsolute = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <!doctype html>
@@ -37,12 +41,17 @@ const canonical = canonicalUrl || Astro.url.href;
     <!-- Google Search Console -->
     <meta name="google-site-verification" content="CPQvPEl2GkkFRdH8y4MdmLgzX8wclFcrZnGQrryMPcI" />
 
+    <!-- Fonts (preconnect + link for LCP optimization) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
     <!-- OGP -->
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageAbsolute} />
     <meta property="og:site_name" content={siteTitle} />
     <meta property="og:locale" content="ja_JP" />
 
@@ -50,7 +59,7 @@ const canonical = canonicalUrl || Astro.url.href;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
@@ -64,15 +73,26 @@ const canonical = canonicalUrl || Astro.url.href;
     })(window,document,'script','dataLayer','GTM-KN7ZRM4T');
     </script>
 
-    <!-- JSON-LD -->
+    <!-- JSON-LD: WebSite + Publisher -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": siteTitle,
-      "url": "https://mieru-note.jp",
+      "url": siteUrl,
+      "description": "ICL・レーシックなど視力矯正手術の体験談と徹底ガイド。実際に施術を受けた筆者が費用・リスク・クリニック選びまで本音で解説します。",
+      "publisher": {
+        "@type": "Organization",
+        "name": "みえるノート",
+        "url": siteUrl,
+        "logo": {
+          "@type": "ImageObject",
+          "url": `${siteUrl}/og-default.png`
+        }
+      },
+      "inLanguage": "ja"
     })} />
   </head>
-  <body class="min-h-screen flex flex-col bg-gray-50">
+  <body class="min-h-screen flex flex-col bg-surface-warm">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KN7ZRM4T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <Header />

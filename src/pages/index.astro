@@ -10,29 +10,33 @@ const sortedArticles = allArticles.sort(
 ---
 
 <BaseLayout
-  title="みえるノート｜ICL・レーシック視力矯正の体験ガイド"
+  title="みえるノート"
   description="ICL・レーシックなど視力矯正手術の体験談と徹底ガイド。実際に施術を受けた筆者が費用・リスク・クリニック選びまで本音で解説します。"
 >
   <!-- Hero Section -->
-  <section class="bg-gradient-to-br from-primary-600 to-primary-800 text-white py-16 md:py-24">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
-        裸眼で見える生活、<br class="md:hidden" />始めませんか？
-      </h1>
-      <p class="text-lg md:text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-        ICL・レーシックの体験談と徹底ガイド。<br />
-        実際に施術を受けた筆者が、本音で情報をお届けします。
+  <section class="relative bg-gray-900 text-white overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,rgba(15,118,110,0.3),transparent_60%)]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(217,119,6,0.15),transparent_50%)]"></div>
+    <div class="relative max-w-5xl mx-auto px-4 py-20 md:py-32">
+      <p class="text-primary-400 text-sm font-medium tracking-widest uppercase mb-4 animate-fade-in">
+        ICL・レーシック 体験ガイド
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <h1 class="font-display text-4xl md:text-6xl font-semibold mb-6 leading-[1.15] text-balance animate-fade-up" style="animation-delay: 0.1s">
+        裸眼で見える生活、<br />始めませんか？
+      </h1>
+      <p class="text-gray-400 text-lg md:text-xl max-w-xl leading-relaxed mb-10 animate-fade-up" style="animation-delay: 0.2s">
+        実際にICLを受けた筆者が、費用・リスク・クリニック選びまで本音で情報をお届けします。
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 animate-fade-up" style="animation-delay: 0.3s">
         <a
-          href="/articles/what-is-icl"
-          class="bg-white text-primary-700 font-bold py-3 px-8 rounded-lg hover:bg-primary-50 transition-colors no-underline"
+          href="/articles/what-is-icl/"
+          class="bg-primary-600 hover:bg-primary-500 text-white font-bold py-3.5 px-8 rounded-lg transition-colors no-underline text-sm"
         >
           ICL手術とは？
         </a>
         <a
-          href="/articles/icl-experience"
-          class="border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white/10 transition-colors no-underline"
+          href="/articles/icl-experience/"
+          class="border border-gray-600 text-gray-300 hover:text-white hover:border-gray-400 font-medium py-3.5 px-8 rounded-lg transition-colors no-underline text-sm"
         >
           体験談を読む
         </a>
@@ -41,30 +45,51 @@ const sortedArticles = allArticles.sort(
   </section>
 
   <!-- Features -->
-  <section class="max-w-5xl mx-auto px-4 -mt-8">
+  <section class="max-w-5xl mx-auto px-4 -mt-6 relative z-10">
     <div class="grid md:grid-cols-3 gap-4">
-      <div class="bg-white rounded-lg shadow-md p-6 text-center">
-        <div class="text-3xl mb-2">🔍</div>
-        <h3 class="font-bold text-gray-800 mb-1">徹底リサーチ</h3>
-        <p class="text-sm text-gray-600">費用・リスク・クリニック選びまで網羅的に解説</p>
+      <div class="bg-white border border-gray-200/80 rounded-lg p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-gray-900 text-sm mb-1">徹底リサーチ</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">費用・リスク・クリニック選びまで網羅的に解説</p>
+        </div>
       </div>
-      <div class="bg-white rounded-lg shadow-md p-6 text-center">
-        <div class="text-3xl mb-2">📝</div>
-        <h3 class="font-bold text-gray-800 mb-1">リアルな体験談</h3>
-        <p class="text-sm text-gray-600">実際にICLを受けた筆者が術前〜術後を記録</p>
+      <div class="bg-white border border-gray-200/80 rounded-lg p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-lg bg-accent-50 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-accent-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-gray-900 text-sm mb-1">リアルな体験談</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">ICLを受けた筆者が術前〜術後を記録</p>
+        </div>
       </div>
-      <div class="bg-white rounded-lg shadow-md p-6 text-center">
-        <div class="text-3xl mb-2">⚖️</div>
-        <h3 class="font-bold text-gray-800 mb-1">公平な比較</h3>
-        <p class="text-sm text-gray-600">ICL vs レーシックをメリット・デメリット両面から比較</p>
+      <div class="bg-white border border-gray-200/80 rounded-lg p-5 flex gap-4 items-start">
+        <div class="w-10 h-10 rounded-lg bg-violet-50 flex items-center justify-center flex-shrink-0">
+          <svg class="w-5 h-5 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+          </svg>
+        </div>
+        <div>
+          <h3 class="font-display font-semibold text-gray-900 text-sm mb-1">公平な比較</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">ICL vs レーシックを両面から比較</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Articles -->
-  <section class="max-w-5xl mx-auto px-4 py-16">
-    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">記事一覧</h2>
-    <div class="grid md:grid-cols-2 gap-6">
+  <section class="max-w-5xl mx-auto px-4 py-20">
+    <div class="text-center mb-10">
+      <h2 class="font-display text-2xl md:text-3xl font-semibold text-gray-900 mb-2">記事一覧</h2>
+      <p class="text-sm text-gray-500">ICL・レーシックについて知りたいことを探す</p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-5">
       {sortedArticles.map((article) => (
         <ArticleCard
           title={article.data.title}
@@ -78,15 +103,35 @@ const sortedArticles = allArticles.sort(
   </section>
 
   <!-- About Section -->
-  <section class="bg-white py-16">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold text-gray-900 mb-4">このサイトについて</h2>
-      <p class="text-gray-600 leading-relaxed">
+  <section class="border-t border-gray-200">
+    <div class="max-w-3xl mx-auto px-4 py-20 text-center">
+      <h2 class="font-display text-2xl font-semibold text-gray-900 mb-5">このサイトについて</h2>
+      <p class="text-gray-600 leading-loose text-sm md:text-base max-w-2xl mx-auto">
         「みえるノート」は、強度近視に20年以上悩んできた筆者が、
         ICL手術を受けることを決意したことをきっかけに立ち上げたサイトです。
         自分自身の体験と徹底的なリサーチをもとに、
         視力矯正手術を検討している方に向けて、本当に役立つ情報をお届けします。
       </p>
+      <a href="/about/" class="inline-flex items-center gap-1.5 text-sm text-primary-700 font-medium mt-6 hover:text-primary-900 transition-colors">
+        運営者情報を見る
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
     </div>
   </section>
+
+  <!-- JSON-LD: ItemList (記事一覧) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "みえるノート 記事一覧",
+    "numberOfItems": sortedArticles.length,
+    "itemListElement": sortedArticles.map((article, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": article.data.title,
+      "url": `https://mieru-note.jp/articles/${article.slug}`
+    }))
+  })} />
 </BaseLayout>
