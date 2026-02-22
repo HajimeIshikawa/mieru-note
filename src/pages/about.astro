@@ -24,14 +24,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </section>
 
       <section class="bg-white border border-gray-200/80 rounded-xl p-7">
-        <h2 class="font-display text-lg font-semibold text-gray-900 mb-3">運営者</h2>
-        <p class="text-gray-700">個人運営</p>
+        <h2 class="font-display text-lg font-semibold text-gray-900 mb-4">運営者プロフィール</h2>
+        <div class="flex items-start gap-5">
+          <div class="w-16 h-16 rounded-full bg-primary-50 flex items-center justify-center flex-shrink-0">
+            <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-display font-semibold text-gray-900 text-lg mb-2">ミエル</p>
+            <p class="text-gray-700 leading-relaxed text-sm">
+              30代のプロジェクトマネージャー兼エンジニア。自由診療領域でのプロジェクト経験があり、医療サービスに関するリサーチ・分析を得意とする。
+              強度近視（-8D以上）に20年以上悩み続け、ICL手術を受けることを決意。
+              自分自身がクリニック選びや情報収集で苦労した経験から、「本当に知りたかった情報」を一つにまとめたサイトを作ろうと考え、みえるノートを立ち上げた。
+            </p>
+          </div>
+        </div>
       </section>
 
       <section class="bg-white border border-gray-200/80 rounded-xl p-7">
         <h2 class="font-display text-lg font-semibold text-gray-900 mb-3">サイトの目的</h2>
         <p class="text-gray-700 leading-relaxed">
-          ICL・レーシックなどの視力矯正手術について、実体験とリサーチに基づいた信頼性の高い情報を提供することを目的としています。
+          ICL・レーシックなどの視力矯正手術について、実体験と徹底的なリサーチに基づいた信頼性の高い情報を提供することを目的としています。
+          筆者自身のICL手術の経過を記録しながら、費用・クリニック選び・術式の違いなど、検討段階で本当に必要な情報を整理してお届けします。
         </p>
       </section>
 
@@ -56,10 +71,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       <section class="bg-white border border-gray-200/80 rounded-xl p-7">
         <h2 class="font-display text-lg font-semibold text-gray-900 mb-3">お問い合わせ</h2>
-        <p class="text-sm text-gray-600">
+        <p class="text-sm text-gray-600 leading-relaxed">
           お問い合わせはメールにてお願いいたします。<br />
-          ※メールアドレスは後日設定予定
+          <span class="font-medium text-gray-700">info@mieru-note.jp</span>（準備中）
         </p>
+        <p class="text-xs text-gray-400 mt-2">※ドメインメール設定完了次第、受信を開始いたします。</p>
       </section>
     </div>
   </div>
